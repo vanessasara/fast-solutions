@@ -264,11 +264,7 @@ export default function Header() {
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "text-sm px-3")}>
-                  <Link href="/blog">Blog</Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
+      
 
               <NavigationMenuItem>
                 <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), "text-sm px-3")}>
@@ -402,13 +398,7 @@ export default function Header() {
                 >
                   Portfolio
                 </Link>
-                <Link
-                  href="/blog"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="px-6 py-3 text-base font-medium hover:bg-accent transition-colors"
-                >
-                  Blog
-                </Link>
+                
                 <Link
                   href="/contact"
                   onClick={() => setMobileMenuOpen(false)}

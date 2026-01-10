@@ -1,455 +1,288 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { CheckCircle2, HelpCircle, Calculator, TrendingDown } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Phone, Palette, Printer, CheckCircle, Truck, ArrowRight, FileCheck, MessageSquare, Sparkles } from "lucide-react";
 
 export const metadata = {
-  title: "Pricing & Packages | Fast Printing & Packaging",
-  description: "Transparent pricing for printing and packaging services. View our price ranges, volume discounts, and package deals. Get a custom quote for your specific needs.",
-  keywords: "printing prices pakistan, packaging costs, printing quotes, bulk printing discounts, affordable printing lahore",
+  title: "How It Works - Our Process | Fast Printing & Packaging",
+  description: "Discover our streamlined 5-step printing process from consultation to delivery. Transparent, professional, and designed for your success.",
+  keywords: "printing process, how printing works, custom printing process, packaging process, print ordering",
 };
 
-export default function PricingPage() {
+const steps = [
+  {
+    number: "01",
+    icon: Phone,
+    title: "Consultation & Quote",
+    description: "Share your vision with our expert team",
+    details: [
+      "Free consultation with printing specialists",
+      "24-hour quote response time",
+      "No obligation - just honest advice",
+      "Help choosing the right materials",
+    ],
+    image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&h=600&fit=crop",
+    imageAlt: "Customer consultation and planning session",
+  },
+  {
+    number: "02",
+    icon: Palette,
+    title: "Design & Approval",
+    description: "Review mockups and approve every detail",
+    details: [
+      "Professional design support included FREE",
+      "Digital mockups before production",
+      "Unlimited revisions until perfect",
+      "Expert guidance on best practices",
+    ],
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
+    imageAlt: "Graphic designer working on print designs",
+  },
+  {
+    number: "03",
+    icon: Printer,
+    title: "Production",
+    description: "Printing with state-of-the-art equipment",
+    details: [
+      "Latest digital and offset printing technology",
+      "Premium quality materials",
+      "Expert craftsmen oversee every job",
+      "Real-time production updates",
+    ],
+    image: "https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=800&h=600&fit=crop",
+    imageAlt: "Modern printing press in operation",
+  },
+  {
+    number: "04",
+    icon: CheckCircle,
+    title: "Quality Control",
+    description: "Rigorous inspection ensures perfection",
+    details: [
+      "Every piece individually inspected",
+      "Color accuracy verification",
+      "Material and finish quality checks",
+      "100% satisfaction guaranteed",
+    ],
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&h=600&fit=crop",
+    imageAlt: "Quality control inspection of printed materials",
+  },
+  {
+    number: "05",
+    icon: Truck,
+    title: "Delivery",
+    description: "Fast, secure shipping nationwide",
+    details: [
+      "Secure packaging to prevent damage",
+      "Real-time tracking available",
+      "Delivery to your doorstep",
+      "On-time delivery guaranteed",
+    ],
+    image: "https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&h=600&fit=crop",
+    imageAlt: "Secure delivery of printed products",
+  },
+];
+
+export default function HowItWorksPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-16 md:py-20 bg-gradient-to-br from-primary/10 to-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex p-3 bg-primary/10 rounded-full mb-6">
-              <Calculator className="h-8 w-8 text-primary" />
-            </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Transparent, Competitive Pricing
+              How It Works
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Quality printing and packaging at prices that make sense for your business. 
-              No hidden fees, just honest pricing.
+              Our streamlined 5-step process makes getting professional printing simple,
+              transparent, and stress-free. From your first call to final delivery, we're with you every step.
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-green-600" />
-                <span className="font-medium">Volume Discounts</span>
+                <Sparkles className="h-5 w-5 text-[#FDB913]" />
+                <span className="font-medium">5-12 Days Standard</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-green-600" />
-                <span className="font-medium">Free Quotes</span>
+                <MessageSquare className="h-5 w-5 text-[#FDB913]" />
+                <span className="font-medium">Free Consultation</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-green-600" />
-                <span className="font-medium">No Hidden Costs</span>
+                <FileCheck className="h-5 w-5 text-[#FDB913]" />
+                <span className="font-medium">100% Guaranteed</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Pricing Philosophy */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Pricing Philosophy</h2>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              Every project is unique, which is why we don't believe in one-size-fits-all pricing. 
-              We provide custom quotes based on your specific requirements, ensuring you only pay for 
-              what you need. The more you order, the better the value—our volume discounts make 
-              quality printing affordable for businesses of all sizes.
-            </p>
+      {/* Process Steps - Detailed */}
+      {steps.map((step, index) => (
+        <section
+          key={step.number}
+          className={index % 2 === 0 ? "py-16 md:py-20" : "py-16 md:py-20 bg-muted/30"}
+        >
+          <div className="container mx-auto px-4">
+            <div className={`grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto ${
+              index % 2 === 1 ? 'md:flex-row-reverse' : ''
+            }`}>
+              {/* Content */}
+              <div className={index % 2 === 1 ? 'md:order-2' : ''}>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-2xl font-bold shadow-lg">
+                    {step.number}
+                  </div>
+                  <div className="inline-flex p-3 bg-primary/10 rounded-lg">
+                    <step.icon className="h-8 w-8 text-primary" />
+                  </div>
+                </div>
+
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">{step.title}</h2>
+                <p className="text-lg text-muted-foreground mb-6">{step.description}</p>
+
+                <div className="space-y-3">
+                  {step.details.map((detail, idx) => (
+                    <div key={idx} className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-[#FDB913] mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground">{detail}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Image */}
+              <div className={`relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-xl ${
+                index % 2 === 1 ? 'md:order-1' : ''
+              }`}>
+                <Image
+                  src={step.image}
+                  alt={step.imageAlt}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
           </div>
+        </section>
+      ))}
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <Card>
-              <CardContent className="pt-6 text-center">
-                <div className="inline-flex p-3 bg-primary/10 rounded-full mb-4">
-                  <CheckCircle2 className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold mb-2">Transparent Pricing</h3>
-                <p className="text-sm text-muted-foreground">
-                  Every quote includes a detailed breakdown with no surprise charges or hidden fees
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="pt-6 text-center">
-                <div className="inline-flex p-3 bg-primary/10 rounded-full mb-4">
-                  <TrendingDown className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold mb-2">Volume Discounts</h3>
-                <p className="text-sm text-muted-foreground">
-                  The more you print, the lower your per-unit cost. Bulk orders get significant savings
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="pt-6 text-center">
-                <div className="inline-flex p-3 bg-primary/10 rounded-full mb-4">
-                  <Calculator className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold mb-2">Custom Quotes</h3>
-                <p className="text-sm text-muted-foreground">
-                  Tailored pricing for your specific project requirements and budget
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Sample Price Ranges */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      {/* Timeline Overview */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 to-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Sample Price Ranges
+              Timeline Overview
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Indicative pricing to help you budget. Final prices depend on specifications, quantity, and materials.
+            <p className="text-muted-foreground text-lg">
+              Typical turnaround times for common projects
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {/* Business Cards */}
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             <Card>
-              <CardHeader>
-                <CardTitle>Business Cards</CardTitle>
-                <CardDescription>Standard size, full color</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">250 cards</span>
-                    <span className="font-semibold">PKR 3,000 - 5,000</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">500 cards</span>
-                    <span className="font-semibold">PKR 4,500 - 7,000</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">1,000 cards</span>
-                    <span className="font-semibold">PKR 7,000 - 10,000</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground pt-2">
-                    Prices vary with paper quality and finishing options
-                  </p>
-                </div>
+              <CardContent className="pt-6 text-center">
+                <div className="text-4xl font-bold text-primary mb-2">3-5</div>
+                <div className="text-lg font-semibold mb-3">Business Days</div>
+                <p className="text-sm text-muted-foreground">
+                  Business cards, flyers, brochures
+                </p>
               </CardContent>
             </Card>
 
-            {/* Flyers */}
             <Card>
-              <CardHeader>
-                <CardTitle>Flyers</CardTitle>
-                <CardDescription>A5 size, single-sided, full color</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">500 flyers</span>
-                    <span className="font-semibold">PKR 5,000 - 8,000</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">1,000 flyers</span>
-                    <span className="font-semibold">PKR 8,000 - 12,000</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">5,000 flyers</span>
-                    <span className="font-semibold">PKR 25,000 - 35,000</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground pt-2">
-                    Double-sided and premium paper available
-                  </p>
-                </div>
+              <CardContent className="pt-6 text-center">
+                <div className="text-4xl font-bold text-primary mb-2">7-10</div>
+                <div className="text-lg font-semibold mb-3">Business Days</div>
+                <p className="text-sm text-muted-foreground">
+                  Custom packaging, larger orders
+                </p>
               </CardContent>
             </Card>
 
-            {/* Brochures */}
             <Card>
-              <CardHeader>
-                <CardTitle>Brochures</CardTitle>
-                <CardDescription>A4 tri-fold, full color</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">100 brochures</span>
-                    <span className="font-semibold">PKR 8,000 - 12,000</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">500 brochures</span>
-                    <span className="font-semibold">PKR 25,000 - 35,000</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">1,000 brochures</span>
-                    <span className="font-semibold">PKR 40,000 - 55,000</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground pt-2">
-                    Custom sizes and folding options available
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Custom Boxes */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Custom Boxes</CardTitle>
-                <CardDescription>Product packaging, custom size</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">100 boxes</span>
-                    <span className="font-semibold">PKR 15,000 - 25,000</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">500 boxes</span>
-                    <span className="font-semibold">PKR 50,000 - 80,000</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">1,000 boxes</span>
-                    <span className="font-semibold">PKR 85,000 - 130,000</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground pt-2">
-                    Pricing depends heavily on size and material
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Labels & Stickers */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Labels & Stickers</CardTitle>
-                <CardDescription>Custom size, full color</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">500 labels</span>
-                    <span className="font-semibold">PKR 4,000 - 7,000</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">1,000 labels</span>
-                    <span className="font-semibold">PKR 6,000 - 10,000</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">5,000 labels</span>
-                    <span className="font-semibold">PKR 20,000 - 30,000</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground pt-2">
-                    Waterproof and die-cut options available
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Banners */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Banners</CardTitle>
-                <CardDescription>Vinyl banner, full color</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">3x6 ft banner</span>
-                    <span className="font-semibold">PKR 2,500 - 4,000</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">4x8 ft banner</span>
-                    <span className="font-semibold">PKR 4,500 - 7,000</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">6x10 ft banner</span>
-                    <span className="font-semibold">PKR 8,000 - 12,000</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground pt-2">
-                    Includes grommets and hemming
-                  </p>
-                </div>
+              <CardContent className="pt-6 text-center">
+                <div className="text-4xl font-bold text-primary mb-2">1-2</div>
+                <div className="text-lg font-semibold mb-3">Business Days</div>
+                <p className="text-sm text-muted-foreground">
+                  Rush orders (additional fees apply)
+                </p>
               </CardContent>
             </Card>
           </div>
 
-          <div className="mt-12 text-center">
-            <p className="text-sm text-muted-foreground mb-6">
-              These are sample prices only. Actual prices vary based on specifications, materials, finishing, and quantity.
-            </p>
-            <Button asChild size="lg">
-              <Link href="/request-quote">Get Your Custom Quote</Link>
-            </Button>
-          </div>
+          <p className="text-center text-sm text-muted-foreground mt-8">
+            Timelines may vary based on order complexity and current workload. Rush services available for urgent needs.
+          </p>
         </div>
       </section>
 
-      {/* What Affects Pricing */}
+      {/* Why Our Process Works */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
-              What Affects Your Price?
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+              Why Our Process Works
             </h2>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-8">
               <Card>
-                <CardHeader>
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <HelpCircle className="h-5 w-5 text-primary" />
-                    </div>
-                    <CardTitle className="text-lg">Quantity</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    Higher quantities significantly reduce per-unit costs. Printing 1,000 units often costs 
-                    only 30-40% more than 500 units.
+                <CardContent className="pt-6">
+                  <h3 className="text-xl font-semibold mb-3">Transparency</h3>
+                  <p className="text-muted-foreground">
+                    You'll know exactly what to expect at every stage. No surprises, no hidden steps.
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
-                <CardHeader>
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <HelpCircle className="h-5 w-5 text-primary" />
-                    </div>
-                    <CardTitle className="text-lg">Material Quality</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    Premium papers, specialty stocks, and eco-friendly materials cost more but deliver 
-                    exceptional quality and durability.
+                <CardContent className="pt-6">
+                  <h3 className="text-xl font-semibold mb-3">Communication</h3>
+                  <p className="text-muted-foreground">
+                    Regular updates keep you informed. You can reach us anytime with questions or changes.
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
-                <CardHeader>
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <HelpCircle className="h-5 w-5 text-primary" />
-                    </div>
-                    <CardTitle className="text-lg">Finishing Options</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    Lamination, UV coating, embossing, foil stamping, and die-cutting add cost but create 
-                    premium, professional results.
+                <CardContent className="pt-6">
+                  <h3 className="text-xl font-semibold mb-3">Quality Control</h3>
+                  <p className="text-muted-foreground">
+                    Every project goes through rigorous checks before leaving our facility.
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
-                <CardHeader>
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <HelpCircle className="h-5 w-5 text-primary" />
-                    </div>
-                    <CardTitle className="text-lg">Turnaround Time</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    Standard 5-7 day turnaround has no rush fees. Express 2-3 day service and same-day 
-                    orders incur additional charges.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <HelpCircle className="h-5 w-5 text-primary" />
-                    </div>
-                    <CardTitle className="text-lg">Size & Complexity</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    Larger sizes require more material. Complex designs with multiple folds, die-cuts, or 
-                    special assembly add production time.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <HelpCircle className="h-5 w-5 text-primary" />
-                    </div>
-                    <CardTitle className="text-lg">Color & Printing Method</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    Full-color (CMYK) costs more than black & white. Digital printing is great for small 
-                    runs; offset is more economical for large quantities.
+                <CardContent className="pt-6">
+                  <h3 className="text-xl font-semibold mb-3">Your Approval</h3>
+                  <p className="text-muted-foreground">
+                    Nothing goes to print without your explicit approval. You're in control.
                   </p>
                 </CardContent>
               </Card>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Volume Discount Tier */}
-      <section className="py-16 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Volume Discounts
-            </h2>
-            <p className="text-lg mb-8 opacity-90">
-              The more you order, the more you save. Enjoy significant discounts on bulk orders.
-            </p>
-
-            <div className="grid md:grid-cols-4 gap-6">
-              {[
-                { range: "100-499", discount: "Standard Price" },
-                { range: "500-999", discount: "Save 10-15%" },
-                { range: "1,000-4,999", discount: "Save 20-25%" },
-                { range: "5,000+", discount: "Save 30-35%" },
-              ].map((tier) => (
-                <Card key={tier.range} className="bg-primary-foreground text-foreground">
-                  <CardContent className="pt-6 text-center">
-                    <div className="text-3xl font-bold mb-2">{tier.range}</div>
-                    <div className="text-sm text-muted-foreground mb-1">units</div>
-                    <div className="text-lg font-semibold text-primary">{tier.discount}</div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            <p className="mt-8 text-sm opacity-90">
-              Discounts apply automatically based on your order quantity. Contact us for enterprise pricing on 10,000+ units.
-            </p>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-primary to-primary/80 text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Get Started?
+              Ready to Start Your Project?
             </h2>
-            <p className="text-muted-foreground text-lg mb-8">
-              Request a detailed quote tailored to your specific needs. Free, fast, and no obligation.
+            <p className="text-lg mb-8 opacity-90">
+              Experience our professional process firsthand. Get started with a free consultation and quote.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg">
-                <Link href="/request-quote">Request Free Quote</Link>
+              <Button asChild size="lg" variant="secondary">
+                <Link href="/request-quote">
+                  Get Free Quote
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link href="/contact">Contact Sales Team</Link>
+              <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+                <Link href="/contact">Contact Us</Link>
               </Button>
             </div>
           </div>

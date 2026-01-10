@@ -1,4 +1,6 @@
 import Hero from "@/components/Hero";
+import CertificationsBadges from "@/components/CertificationsBadges";
+import TrustBadges from "@/components/TrustBadges";
 import ServicesGrid from "@/components/ServicesGrid";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import StatsCounter from "@/components/StatsCounter";
@@ -12,7 +14,9 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <TrustBadges />
       <ServicesGrid />
+      <CertificationsBadges />
       <WhyChooseUs />
       <StatsCounter />
       <FeaturedPortfolio />
